@@ -11,19 +11,14 @@ description = "PorteCullisante"
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 repositories {
-    mavenLocal()
-    maven {
-        url = uri("https://papermc.io/repo/repository/maven-public/")
-    }
-
-    maven {
-        url = uri("https://repo.maven.apache.org/maven2/")
-    }
+    mavenCentral()
+    maven("https://papermc.io/repo/repository/maven-public/")
 }
 
 dependencies {
-    testImplementation("junit:junit:4.13.2")
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+    testImplementation(platform("org.junit:junit-bom:5.8.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks {
