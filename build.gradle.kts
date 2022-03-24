@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.reliqcraft"
-version = "1.2-SNAPSHOT"
+version = "1.4.3"
 description = "PorteCoullisante"
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
@@ -27,6 +27,11 @@ tasks {
         options.encoding = Charsets.UTF_8.name()
         options.isFork = true
         options.isDeprecation = true
+    }
+    withType(ProcessResources::class) {
+        filesMatching("plugin.yml") {
+            expand("version" to project.version)
+        }
     }
 }
 
